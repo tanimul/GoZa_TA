@@ -1,4 +1,4 @@
-package com.example.lab_ta.di
+package com.tanimul.goza_ta.di
 
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
