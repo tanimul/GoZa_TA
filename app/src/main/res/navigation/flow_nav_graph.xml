@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_seeAllFragment"
+            app:destination="@id/seeAllFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.tanimul.goza_ta.presentations.fragments.details.presentations.DetailsFragment"
+        android:label="DetailsFragment" />
+    <fragment
+        android:id="@+id/seeAllFragment"
+        android:name="com.tanimul.goza_ta.presentations.fragments.see_all.presentations.SeeAllFragment"
+        android:label="SeeAllFragment" />
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="com.tanimul.goza_ta.presentations.fragments.bookmark.presentations.BookMarkFragment"
+        android:label="BookMarkFragment" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.tanimul.goza_ta.presentations.fragments.notification.presentations.NotificationFragment"
+        android:label="NotificationFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.tanimul.goza_ta.presentations.fragments.profile.presentations.ProfileFragment"
+        android:label="ProfileFragment" />
+
+</navigation>
