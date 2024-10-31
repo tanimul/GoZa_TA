@@ -3,7 +3,36 @@
     <style name="Base.Theme.GoZa_TA" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="android:statusBarColor">#1D2026</item>
     </style>
 
     <style name="Theme.GoZa_TA" parent="Base.Theme.GoZa_TA" />
+
+    <style name="ShapeAppearanceOverlay.CornerSize20Percent" parent="">
+        <item name="cornerSize">20%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/white</item>
+        <item name="itemTextColor">@color/white</item>
+        <item name="itemTextAppearanceActive">@style/BottomNavigationView.TextAppearance</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationView.TextAppearance</item>
+        <item name="itemIconSize">30dp</item>
+        <item name="itemRippleColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="BottomNavigationView.TextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/rubik_regular</item>
+    </style>
+
+
+    <style name="EditText">
+        <item name="android:background">@drawable/search_box</item>
+        <item name="backgroundColor">#2D303A</item>
+    </style>
+
+
 </resources>
