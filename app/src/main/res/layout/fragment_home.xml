@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeViewModel" />
+
+        <import type="com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeUiActions" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_1d2026"
+        tools:context=".presentations.fragments.home.presentations.HomeFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/margin_size_20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/margin_size_30dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/margin_size_30dp" />
+
+        <ImageView
+            android:id="@+id/iv_category"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_category"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/top_guideline"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/padding_size_6dp"
+            android:fontFamily="@font/rubik_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/color_868686"
+            android:textSize="@dimen/text_size_14sp"
+            app:drawableStartCompat="@drawable/ic_map_pin"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_profilePhoto"
+            app:layout_constraintEnd_toStartOf="@id/iv_profilePhoto"
+            app:layout_constraintStart_toEndOf="@id/iv_category"
+            app:layout_constraintTop_toBottomOf="@id/top_guideline"
+            android:text="@string/new_york_ny" />
+
+        <ImageView
+            android:id="@+id/iv_profilePhoto"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/background_back_button"
+            android:backgroundTint="@color/color_2d303a"
+            android:padding="@dimen/padding_size_6dp"
+            android:src="@drawable/avatar"
+            app:layout_constraintEnd_toStartOf="@id/end_guideline"
+            app:layout_constraintTop_toBottomOf="@id/top_guideline"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/et_search"
+            style="@style/EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="no"
+            android:layout_marginTop="@dimen/margin_size_40dp"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/padding_size_10dp"
+            android:drawableTint="@color/color_dbdbdb"
+            android:hint="@string/search"
+            android:textColorHint="@color/color_868686"
+            android:inputType="text"
+            android:fontFamily="@font/rubik_regular"
+            android:paddingVertical="@dimen/padding_size_10dp"
+            android:paddingHorizontal="@dimen/padding_size_15dp"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintEnd_toStartOf="@id/end_guideline"
+            app:layout_constraintTop_toBottomOf="@id/iv_category" />
+
+        <TextView
+            android:id="@+id/tv_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_medium"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/margin_size_40dp"
+            android:text="@string/popular_categories"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18sp"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/et_search" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_category"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            bindCategories="@{viewModel.categories}"
+            bindViewModel="@{viewModel}"
+            android:layout_marginTop="@dimen/margin_size_30dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@id/end_guideline"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_categories"
+            app:spanCount="4"
+            tools:listitem="@layout/item_category" />
+
+        <TextView
+            android:id="@+id/tv_recommended"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_medium"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/margin_size_40dp"
+            android:text="@string/recommended"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/rv_category" />
+
+        <TextView
+            android:id="@+id/tv_seeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_medium"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:onClick="@{()->viewModel.uiActions(HomeUiActions.OnNavigateSeeAll.INSTANCE)}"
+            android:text="@string/see_all"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_recommended"
+            app:layout_constraintEnd_toStartOf="@id/end_guideline"
+            app:layout_constraintTop_toTopOf="@+id/tv_recommended" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_place"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_size_30dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/end_guideline"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommended"
+            app:spanCount="2"
+            tools:listitem="@layout/item_place" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

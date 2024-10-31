@@ -13,6 +13,7 @@ import com.tanimul.goza_ta.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@BindingAdapter("loadImageFromDrawable")
 fun ImageView.loadImageFromDrawable(@DrawableRes aPlaceHolderImage: Int) {
     Glide.with(this.context).load(aPlaceHolderImage).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         .into(this)
