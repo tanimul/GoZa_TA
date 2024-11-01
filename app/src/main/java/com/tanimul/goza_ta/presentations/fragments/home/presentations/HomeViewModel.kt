@@ -26,7 +26,8 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _uiAction = Channel<HomeUiActions>(Channel.CONFLATED)
-    val uiAction = _uiAction.receiveAsFlow()
+    val
+            uiAction = _uiAction.receiveAsFlow()
 
     private val _categories = MutableStateFlow<List<Category>>(emptyList())
     val categories: StateFlow<List<Category>> = _categories
@@ -98,14 +99,16 @@ class HomeViewModel @Inject constructor(
     }
 
     fun selectedPlace(recommended: Recommended) {
+        Timber.d("selectedPlace $recommended")
         uiActions(
-            HomeUiActions.SelectedPlace(
+            HomeUiActions.OnSelectedPlace(
                 recommended
             )
         )
     }
 
     fun seeAll() {
+        Timber.d("seeAll")
         viewModelScope.launch {
             recommended.collect {
                 it?.data?.let { data ->
@@ -121,9 +124,13 @@ class HomeViewModel @Inject constructor(
 
     }
 
+    fun searchPlaces(key: String) {
+        Timber.d("search place: $key")
+    }
+
 }
 
 sealed interface HomeUiActions {
-    data class SelectedPlace(val recommended: Recommended) : HomeUiActions
+    data class OnSelectedPlace(val recommended: Recommended) : HomeUiActions
     data class OnNavigateSeeAll(val recommendedList: List<Recommended>) : HomeUiActions
 }

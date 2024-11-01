@@ -10,6 +10,8 @@
 
         <import type="com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeUiActions" />
 
+        <import type="android.view.View" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="@dimen/margin_size_20dp" />
+            app:layout_constraintGuide_begin="@dimen/margin_size_64dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/start_guideline"
@@ -89,6 +91,7 @@
             android:drawableTint="@color/color_dbdbdb"
             android:hint="@string/search"
             android:textColorHint="@color/color_868686"
+            android:textColor="@color/white"
             android:inputType="text"
             android:fontFamily="@font/rubik_regular"
             android:paddingVertical="@dimen/padding_size_10dp"
@@ -148,10 +151,11 @@
             android:fontFamily="@font/rubik_medium"
             android:includeFontPadding="false"
             android:maxLines="1"
-            android:onClick="@{()->viewModel.uiActions(HomeUiActions.OnNavigateSeeAll.INSTANCE)}"
+            android:onClick="@{()-> viewModel.seeAll()}"
             android:text="@string/see_all"
-            android:textColor="@color/white"
+            android:textColor="@color/color_f88264"
             android:textSize="@dimen/text_size_12sp"
+            android:visibility="@{viewModel.recommended.data.size != 0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_recommended"
             app:layout_constraintEnd_toStartOf="@id/end_guideline"
             app:layout_constraintTop_toTopOf="@+id/tv_recommended" />
@@ -162,13 +166,15 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_size_30dp"
             android:orientation="horizontal"
+            bindRecommended="@{viewModel.recommended.data}"
+            bindViewModel="@{viewModel}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/end_guideline"
             app:layout_constraintStart_toEndOf="@id/start_guideline"
             app:layout_constraintTop_toBottomOf="@id/tv_recommended"
             app:spanCount="2"
-            tools:listitem="@layout/item_place" />
+            tools:listitem="@layout/item_recommended" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

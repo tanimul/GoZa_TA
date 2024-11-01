@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.GoZa_TA" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.GoZa_TA" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
@@ -33,11 +33,33 @@
         <item name="fontFamily">@font/rubik_regular</item>
     </style>
 
-
     <style name="EditText">
         <item name="android:background">@drawable/search_box</item>
         <item name="backgroundColor">#2D303A</item>
     </style>
+
+    <style name="ShapeAppearance.BottomCorners" parent="ShapeAppearance.MaterialComponents">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="android:bottomLeftRadius">16dp</item>
+        <item name="android:bottomRightRadius">16dp</item>
+        <item name="android:topLeftRadius">0dp</item>
+        <item name="android:topRightRadius">0dp</item>
+    </style>
+
+    <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">40dp</item>
+        <item name="cornerSizeBottomLeft">40dp</item>
+        <item name="android:background">@drawable/rounded_bottom_corners</item>
+    </style>
+
 
 
 </resources>

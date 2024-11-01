@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tanimul.goza_ta.presentations.fragments.details.presentations.DetailsViewModel" />
+
+        <import type="com.tanimul.goza_ta.presentations.fragments.details.presentations.DetailsUiActions" />
+
+        <variable
+            name="details"
+            type="com.tanimul.goza_ta.common.domain.model.Recommended" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_1d2026"
+        tools:context=".presentations.fragments.details.presentations.DetailsFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/margin_size_64dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/margin_size_34dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/margin_size_30dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/margin_size_30dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_banner"
+            style="@style/MyCardView"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:cardElevation="4dp"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/background_back_button"
+            android:onClick="@{()-> viewModel.uiActions(DetailsUiActions.OnNavigateBack.INSTANCE)}"
+            android:padding="@dimen/padding_size_8dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/top_guideline"
+            app:tint="@color/white"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_locationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_40dp"
+            android:fontFamily="@font/rubik_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{details.propertyName}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_24sp"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/cv_banner"
+            tools:text="Mountain Safari" />
+
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/rubik_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{details.rating.toString()}"
+            android:textColor="@color/color_868686"
+            android:textSize="@dimen/text_size_14sp"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_locationName"
+            app:layout_constraintEnd_toStartOf="@id/end_guideline"
+            app:layout_constraintTop_toTopOf="@+id/tv_locationName"
+            tools:text="4.9" />
+
+        <TextView
+            android:id="@+id/tv_countryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_8dp"
+            android:drawablePadding="@dimen/padding_size_6dp"
+            android:fontFamily="@font/rubik_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{details.propertyName}"
+            android:textColor="@color/color_868686"
+            android:textSize="@dimen/text_size_14sp"
+            app:drawableStartCompat="@drawable/ic_map_pin"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_locationName"
+            tools:text="India" />
+
+        <TextView
+            android:id="@+id/tv_aboutTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_40dp"
+            android:drawablePadding="@dimen/padding_size_6dp"
+            android:fontFamily="@font/rubik_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@string/about_the_trip"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_24sp"
+            app:drawableEndCompat="@drawable/ic_emoji"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_countryName" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_16dp"
+            android:drawablePadding="@dimen/padding_size_6dp"
+            android:fontFamily="@font/rubik_regular"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="8dp"
+            android:text="@{details.description}"
+            android:textColor="@color/color_868686"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toEndOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/tv_aboutTrip"
+            tools:text="List of Inspiring Slogans a fresh coat for a fresh start meet the world make traveling fun explore the globe with a new sky, a new life let us help you find ..." />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_868686"
+            app:layout_constraintBottom_toTopOf="@id/layout_bottom"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_bottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/end_guideline"
+            app:layout_constraintStart_toEndOf="@id/start_guideline">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_bold"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{`$ `+details.fare}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/button_bookNow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/button_bookNow"
+                tools:text="$ 5,307" />
+
+            <TextView
+                android:id="@+id/tv_priceDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_4dp"
+                android:fontFamily="@font/rubik_medium"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{`/`+details.fareUnit}"
+                android:textAllCaps="true"
+                android:textColor="@color/color_868686"
+                android:textSize="@dimen/text_size_10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+                app:layout_constraintStart_toEndOf="@id/tv_price"
+                app:layout_constraintTop_toTopOf="@+id/tv_price"
+                tools:text="/Per Day" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_bookNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_size_12dp"
+                android:background="@drawable/background_button"
+                android:fontFamily="@font/rubik_medium"
+                android:onClick="@{()->viewModel.uiActions(DetailsUiActions.OnBookNow.INSTANCE)}"
+                android:text="@string/book_now"
+                android:textColor="@color/color_1d2026"
+                android:clickable="true"
+                android:focusable="true"
+                app:elevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

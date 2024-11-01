@@ -1,5 +1,6 @@
 [versions]
 agp = "8.7.1"
+banner = "2.2.2"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -30,6 +31,7 @@ navSafeArgs = "2.7.7"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-paging-rxjava3 = { module = "androidx.paging:paging-rxjava3", version.ref = "pagingRxjava3" }
+banner = { module = "io.github.youth5201314:banner", version.ref = "banner" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

@@ -11,4 +11,6 @@
     <string name="popular_categories">Popular Categories</string>
     <string name="recommended">Recommended</string>
     <string name="see_all">See All</string>
+    <string name="about_the_trip">About the trip</string>
+    <string name="book_now">Book Now</string>
 </resources>

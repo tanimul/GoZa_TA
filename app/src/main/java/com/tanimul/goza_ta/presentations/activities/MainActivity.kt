@@ -1,6 +1,7 @@
 package com.tanimul.goza_ta.presentations.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -24,9 +25,25 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun init(savedInstanceState: Bundle?) {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_hostFragment) as NavHostFragment
-        binding.bottomNavigationView.setupWithNavController(navHostFragment.navController)
+        val navController = navHostFragment.navController
+        binding.bottomNavigationView.setupWithNavController(navController)
+
+        val fragmentsWithBottomNav = setOf(
+            R.id.homeFragment,
+            R.id.bookmarkFragment,
+            R.id.notificationFragment,
+            R.id.profileFragment,
+        )
+
+        // Hide/show the BottomNavigationView
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id in fragmentsWithBottomNav) {
+                binding.bottomNavigationView.visibility = View.VISIBLE
+            } else {
+                binding.bottomNavigationView.visibility = View.GONE
+            }
+        }
 
     }
-
 
 }

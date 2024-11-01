@@ -112,4 +112,6 @@ dependencies {
     implementation (libs.androidx.paging.rxjava3)
     implementation (libs.rxandroid)
     implementation (libs.rxjava3.retrofit.adapter)
+
+    implementation (libs.banner)
 }
