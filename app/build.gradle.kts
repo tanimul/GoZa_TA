@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.navSafeArgs)
+    id("kotlin-parcelize")
 }
 
 android {
