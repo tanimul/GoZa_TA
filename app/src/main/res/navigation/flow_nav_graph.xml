@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_seeAllFragment"
-            app:destination="@id/seeAllFragment" />
+            app:destination="@id/seeAllFragment">
+            <argument
+                android:name="recommendedList"
+                app:argType="com.tanimul.goza_ta.common.domain.model.Recommended[]"
+                app:nullable="true" />
+        </action>
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment">
+            <argument
+                android:name="recommended"
+                app:argType="com.tanimul.goza_ta.common.domain.model.Recommended"
+                app:nullable="true" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.tanimul.goza_ta.presentations.fragments.details.presentations.DetailsFragment"
-        android:label="DetailsFragment" />
+        android:label="DetailsFragment">
+        <argument
+            android:name="recommended"
+            app:argType="com.tanimul.goza_ta.common.domain.model.Recommended"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/seeAllFragment"
         android:name="com.tanimul.goza_ta.presentations.fragments.see_all.presentations.SeeAllFragment"
-        android:label="SeeAllFragment" />
+        android:label="SeeAllFragment">
+        <argument
+            android:name="recommendedList"
+            app:argType="com.tanimul.goza_ta.common.domain.model.Recommended[]"
+            app:nullable="true" />
+
+    </fragment>
     <fragment
         android:id="@+id/bookmarkFragment"
         android:name="com.tanimul.goza_ta.presentations.fragments.bookmark.presentations.BookMarkFragment"

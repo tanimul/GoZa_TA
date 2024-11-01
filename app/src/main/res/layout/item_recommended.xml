@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.tanimul.goza_ta.common.domain.model.Recommended" />
+
+        <variable
+            name="viewModel"
+            type="com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="@{()-> viewModel.selectedPlace(item)}"
+        android:paddingEnd="@dimen/padding_size_16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_location"
+            imageUrl="@{item.heroImage}"
+            android:layout_width="210dp"
+            android:layout_height="230dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.CornerSize20"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/location" />
+
+        <ImageView
+            android:id="@+id/iv_bookMark"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/background_bookmark"
+            android:padding="10dp"
+            android:src="@drawable/ic_bookmark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_locationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_size_16dp"
+            android:layout_marginBottom="@dimen/margin_size_6dp"
+            android:fontFamily="@font/rubik_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{item.propertyName}"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_countryName"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Mountain Safari" />
+
+        <TextView
+            android:id="@+id/tv_countryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_size_16dp"
+            android:layout_marginBottom="@dimen/margin_size_16dp"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/rubik_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{item.location}"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_map_pin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="India" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
