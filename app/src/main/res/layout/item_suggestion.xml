@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.tanimul.goza_ta.common.domain.model.Recommended" />
+
+        <variable
+            name="viewModel"
+            type="com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()-> viewModel.selectedPlace(item)}"
+        android:paddingHorizontal="@dimen/padding_size_8dp">
+
+        <TextView
+            android:id="@+id/tv_locationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_size_6dp"
+            android:fontFamily="@font/rubik_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{item.propertyName}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mountain Safari" />
+
+        <TextView
+            android:id="@+id/tv_countryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_4dp"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/rubik_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{item.location}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_map_pin"
+            app:drawableTint="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_locationName"
+            tools:text="India" />
+
+        <ImageView
+            android:id="@+id/img_rightArrow"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="16dp"
+            tools:ignore="ContentDescription"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_right_arrow_ash"
+            app:tint="@color/color_868686" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_size_6dp"
+            android:background="@color/color_e7eef8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_countryName" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

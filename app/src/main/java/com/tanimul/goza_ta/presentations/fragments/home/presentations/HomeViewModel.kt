@@ -26,8 +26,7 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _uiAction = Channel<HomeUiActions>(Channel.CONFLATED)
-    val
-            uiAction = _uiAction.receiveAsFlow()
+    val uiAction = _uiAction.receiveAsFlow()
 
     private val _categories = MutableStateFlow<List<Category>>(emptyList())
     val categories: StateFlow<List<Category>> = _categories
@@ -37,6 +36,8 @@ class HomeViewModel @Inject constructor(
         recommendedUseCase(Unit)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
+    private val _suggestion = MutableStateFlow<List<Recommended>>(emptyList())
+    val suggestion: StateFlow<List<Recommended>> = _suggestion
 
     init {
         loadCategories()
@@ -126,6 +127,20 @@ class HomeViewModel @Inject constructor(
 
     fun searchPlaces(key: String) {
         Timber.d("search place: $key")
+        if (key != "")
+            viewModelScope.launch {
+                recommended.collect {
+                    it?.data?.let { data ->
+                        _suggestion.value = data.filter {
+                            it.propertyName?.contains(
+                                key,
+                                ignoreCase = true
+                            ) == true
+                        }
+                    }
+                }
+            }
+        else _suggestion.value = emptyList()
     }
 
 }
