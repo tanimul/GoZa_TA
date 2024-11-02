@@ -42,6 +42,14 @@
             android:name="recommendedList"
             app:argType="com.tanimul.goza_ta.common.domain.model.Recommended[]"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_seeAllFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" >
+                <argument
+                    android:name="recommended"
+                    app:argType="com.tanimul.goza_ta.common.domain.model.Recommended"
+                    app:nullable="true" />
+            </action>
 
     </fragment>
     <fragment

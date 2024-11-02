@@ -10,7 +10,6 @@ import com.tanimul.goza_ta.base.BaseFragment
 import com.tanimul.goza_ta.common.extention.launchAndRepeatWithViewLifecycle
 import com.tanimul.goza_ta.databinding.FragmentSeeAllBinding
 import com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeFragmentDirections
-import com.tanimul.goza_ta.presentations.fragments.home.presentations.HomeUiActions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
@@ -41,7 +40,11 @@ class SeeAllFragment : BaseFragment<FragmentSeeAllBinding>(R.layout.fragment_see
                 seeAllViewModel.uiAction.collectLatest {
                     when (it) {
                         is SeeAllUiActions.OnNavigateBack -> findNavController().popBackStack()
-                        is SeeAllUiActions.SelectedPlace -> TODO()
+                        is SeeAllUiActions.SelectedPlace -> findNavController().navigate(
+                            SeeAllFragmentDirections.actionSeeAllFragmentToDetailsFragment(
+                                it.recommended
+                            )
+                        )
                     }
                 }
             }
