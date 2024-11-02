@@ -81,10 +81,12 @@
             android:background="@drawable/background_back_button"
             android:onClick="@{()-> viewModel.uiActions(DetailsUiActions.OnNavigateBack.INSTANCE)}"
             android:padding="@dimen/padding_size_8dp"
+            android:elevation="4dp"
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toEndOf="@id/start_guideline"
             app:layout_constraintTop_toBottomOf="@id/top_guideline"
             app:tint="@color/white"
+            android:backgroundTint="@color/color_868686"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -172,7 +174,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/color_868686"
+            android:background="@color/color_2d303a"
             app:layout_constraintBottom_toTopOf="@id/layout_bottom"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -192,7 +194,8 @@
                 android:fontFamily="@font/rubik_bold"
                 android:includeFontPadding="false"
                 android:maxLines="1"
-                android:text="@{`$ `+details.fare}"
+                app:currencyAmount="@{details.fare}"
+                app:currencyCode="@{details.currency}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/button_bookNow"

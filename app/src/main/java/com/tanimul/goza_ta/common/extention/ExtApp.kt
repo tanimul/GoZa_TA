@@ -1,6 +1,7 @@
 package com.tanimul.goza_ta.common.extention
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
@@ -12,6 +13,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tanimul.goza_ta.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.util.Locale
 
 @BindingAdapter("loadImageFromDrawable")
 fun ImageView.loadImageFromDrawable(@DrawableRes aPlaceHolderImage: Int) {
@@ -45,6 +48,7 @@ inline fun Fragment.launchAndRepeatWithViewLifecycle(
         }
     }
 }
+
 inline fun Fragment.launchWhenCreatedLifecycle(
     minActiveState: Lifecycle.State = Lifecycle.State.CREATED,
     crossinline block: suspend CoroutineScope.() -> Unit
@@ -53,6 +57,33 @@ inline fun Fragment.launchWhenCreatedLifecycle(
         viewLifecycleOwner.repeatOnLifecycle(minActiveState) {
             block()
         }
+    }
+}
+
+
+@BindingAdapter("app:currencyAmount", "app:currencyCode", requireAll = true)
+fun setCurrencyAmount(textView: TextView, amount: Int?, currencyCode: String?) {
+    if (amount != null) {
+        val locale = when (currencyCode) {
+            "USD" -> Locale.US
+            "EUR" -> Locale("de", "DE")  // Euro (Germany)
+            "JPY" -> Locale.JAPAN          // Japanese Yen
+            "GBP" -> Locale.UK             // British Pound
+            "AUD" -> Locale("en", "AU")    // Australian Dollar
+            "CAD" -> Locale.CANADA         // Canadian Dollar
+            "INR" -> Locale("en", "IN")    // Indian Rupee
+            "BDT" -> Locale("en", "BD")    // Bangladesh Taka
+            // Add more currencies as needed
+            else -> Locale.US  // Default to USD
+        }
+
+        val formattedAmount =
+            NumberFormat.getCurrencyInstance(locale).apply { maximumFractionDigits = 0 }
+                .format(amount)
+        val output = formattedAmount.replace(Regex("^(\\p{Sc})(\\d)"), "$1 $2")
+        textView.text = output
+    } else {
+        textView.text = ""
     }
 }
 
