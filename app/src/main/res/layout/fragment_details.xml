@@ -130,7 +130,7 @@
             android:fontFamily="@font/rubik_regular"
             android:includeFontPadding="false"
             android:maxLines="1"
-            android:text="@{details.propertyName}"
+            android:text="@{details.location}"
             android:textColor="@color/color_868686"
             android:textSize="@dimen/text_size_14sp"
             app:drawableStartCompat="@drawable/ic_map_pin"
@@ -233,6 +233,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 app:elevation="0dp"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
